@@ -24,6 +24,7 @@
             android:resource="@xml/file_path" />
 
         <activity android:name=".Activity.MainActivity" >
+
         </activity>
         <activity android:name=".Activity.RetrievePasswordActivity" />
         <activity android:name=".Activity.LoginActivity">
