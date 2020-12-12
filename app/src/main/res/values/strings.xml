@@ -1,10 +1,10 @@
 <resources>
     <string name="app_name">Cainiao Mall</string>
-    <string name="RememberPassword">忘记密码</string>
-    <string name="username"></string>
+    <string name="RememberPassword">记住密码</string>
+    <string name="ForgetPassword">忘记密码</string>
     <string name="PasswordPrompt">忘记密码？请联系管理员QQ2023029375</string>
     <string name="description" />
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="myname">我是只小菜鸟</string>
+    <string name="myname">小菜鸟</string>
 </resources>

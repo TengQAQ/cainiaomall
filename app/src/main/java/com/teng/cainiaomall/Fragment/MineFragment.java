@@ -16,7 +16,6 @@ public class MineFragment extends Fragment {
     public static final int TAKE_CAMERA = 1;
     private static final int CHOOSE_PHOTO = 2;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,10 +26,9 @@ public class MineFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_mine, container, false);
         myavatar=view.findViewById(R.id.myavatar);
+
+
+
         return view;
-
     }
-
-
-
 }
