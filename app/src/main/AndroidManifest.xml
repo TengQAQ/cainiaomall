@@ -18,14 +18,13 @@
         android:roundIcon="@mipmap/bird"
         android:supportsRtl="true"
         android:theme="@style/Theme.CainiaoMall">
+        <activity android:name=".Activity.Setinformation"></activity>
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/file_path" />
 
-        <activity android:name=".Activity.MainActivity" >
-
-        </activity>
+        <activity android:name=".Activity.MainActivity"></activity>
         <activity android:name=".Activity.RetrievePasswordActivity" />
         <activity android:name=".Activity.LoginActivity">
             <intent-filter>
@@ -36,8 +35,6 @@
         </activity>
         <activity android:name=".Activity.RegisterActivity" />
 
-
-
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.teng.cainiaomall.fileprovider"
@@ -47,7 +44,6 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_path" />
         </provider>
-
     </application>
 
 </manifest>
