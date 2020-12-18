@@ -27,6 +27,18 @@ public class DBOpenHelp extends SQLiteOpenHelper {
         db.execSQL("insert into 'cm_user' values ('001','123456','秦腾辉',0,null,1.0,17623876031)");
         db.execSQL("insert into 'cm_user' values ('002','123456','刘立杰',1,null,1.0,17623876031)");
         db.execSQL("insert into 'cm_user' values ('003','123456','李文平',2,null,1.0,17623876031)");
+        db.execSQL("CREATE TABLE 'cm_good'(good_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "good_name varchar(30)," +
+                "good_picpath varchar(200)," +
+                "good_describe varchar(400)," +
+                "good_price double(10)," +
+                "good_ztype varchar(10)," +
+                "good_time time," +
+                "good_user_id varchar(10)," +
+                "good_note varchar(500)," +
+                "good_shzt varchar(2)," +
+                "good_sx varchar(2) not null);");
+        db.execSQL("insert into 'cm_good' values('001','001',null,'无',12.5,'小零食','2020-01-01','001','haochi','0','0')");
     }
 
     @Override

@@ -50,6 +50,8 @@ public class RegisterActivity extends AppCompatActivity {
                             Toast.makeText(this,"注册成功",Toast.LENGTH_SHORT).show();
                             Intent intent1=new Intent();
                             intent1.setClass(RegisterActivity.this, LoginActivity.class);
+                            intent1.putExtra("user_id",user.getUser_id());
+                            Log.i("user_id",user.getUser_id());
                             startActivity(intent1);
                             finish();
                         }

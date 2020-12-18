@@ -27,8 +27,8 @@ public class LoginActivity extends AppCompatActivity {
     private TextView mEditTextUserName,mEditTextPasswd,mLoginregister,mLoginpassword,mLoginhelp;
     private Button mButtonLogin;
     private String userName,userPasswd;
-    SharedPreferences sp= null;//保存登录后的用户名
-    SharedPreferences.Editor editor=null;
+    private SharedPreferences sp= null;//保存登录后的用户名
+    private SharedPreferences.Editor editor=null;
     private CheckBox mremenberpassword;
     private boolean isremenberpassword;
 
@@ -49,6 +49,11 @@ public class LoginActivity extends AppCompatActivity {
         editor=sp.edit();
         isremenberpassword=sp.getBoolean("bt_isremember",false);
 
+
+//        Intent intent=getIntent();
+//        String user9277548 =intent.getStringExtra("user_id");
+//        mEditTextUserName.setText(user9277548);
+
         if (isremenberpassword){
             mEditTextUserName.setText(sp.getString("username",userName));
             mEditTextPasswd.setText(sp.getString("password",userPasswd));
@@ -56,23 +61,24 @@ public class LoginActivity extends AppCompatActivity {
         }
 
         mLoginhelp.setOnClickListener(v -> {
-            Intent intent= new Intent();
-            intent.setAction(Intent.ACTION_VIEW);
+            Intent intent5= new Intent();
+            intent5.setAction(Intent.ACTION_VIEW);
             Uri content_url = Uri.parse("https://kf.qq.com/product/QQ.html");
-            intent.setData(content_url);
-            startActivity(intent);
+            intent5.setData(content_url);
+            startActivity(intent5);
         });
 
         mLoginpassword.setOnClickListener(v -> {
-            Intent intent=new Intent();
-            intent.setClass(LoginActivity.this,RetrievePasswordActivity.class);
-            startActivity(intent);
+            Intent intent1=new Intent();
+            intent1.setClass(LoginActivity.this,RetrievePasswordActivity.class);
+            startActivity(intent1);
         });
 
         mLoginregister.setOnClickListener(v -> {
-            Intent intent=new Intent();
-            intent.setClass(LoginActivity.this,RegisterActivity.class);
-            startActivity(intent);
+            Intent intent2=new Intent();
+            intent2.putExtra("user_id",userName);
+            intent2.setClass(LoginActivity.this,RegisterActivity.class);
+            startActivity(intent2);
         });
         mButtonLogin.setOnClickListener( v -> {
             userName = mEditTextUserName.getText().toString();
@@ -98,9 +104,9 @@ public class LoginActivity extends AppCompatActivity {
                         }
                         editor.commit();
                         Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent =new Intent();
-                        intent.setClass(LoginActivity.this,MainActivity.class);
-                        startActivity(intent);
+                        Intent intent3 =new Intent();
+                        intent3.setClass(LoginActivity.this,MainActivity.class);
+                        startActivity(intent3);
                         finish();
                     }
                     else if (user.getUser_statue() == 1){

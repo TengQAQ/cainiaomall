@@ -4,18 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.graphics.Bitmap;
-import android.graphics.drawable.BitmapDrawable;
-import android.graphics.drawable.Drawable;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.teng.cainiaomall.DB.DBOpenHelp;
 import com.teng.cainiaomall.Model.User;
-import com.teng.cainiaomall.R;
-
-import java.io.ByteArrayOutputStream;
 
 public class User_Dao {
     private DBOpenHelp DBOpenHelper;
@@ -52,7 +43,7 @@ public class User_Dao {
     * */
     public void change_avatar(String id,String avatar){
         db=DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        Cursor cursor=db.rawQuery("update tb_user set user_picPath='"+avatar+"'where user_id='"+id+"'",null);
+        Cursor cursor=db.rawQuery("update tb_user where user_picPath='"+avatar+"'user_id='"+id+"'",null);
         if (cursor.moveToNext()){
             cursor.close();
             db.close();
@@ -78,6 +69,23 @@ public class User_Dao {
 //        contentValues.put("user_avatar", "null");
         insertfalg = db.insert("cm_user", null, contentValues);
         return insertfalg;
+    }
+    /*
+    * 更新个人资料
+    *
+    * */
+    public int update_user(User user){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("update cm_user set user_tel='"+user.getUser_tel()+"',user_password='"+user.getUser_password()+"',user_name='"+user.getUser_name()+"'where user_id='"+user.getUser_id()+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+            return 0;
+        }
+
+        cursor.close();
+        db.close();
+        return 1;
     }
     /*
     * 储存图片

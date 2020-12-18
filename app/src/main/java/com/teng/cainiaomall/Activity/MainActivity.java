@@ -6,6 +6,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -43,6 +44,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //设置第一个Fragment默认选中
             setFragment(mFragmentId);
         }
+
+        Intent intent = getIntent();
+        String sentuser = intent.getStringExtra("user_id");
 
         mtv_home.setOnClickListener(this);
         mtv_buy.setOnClickListener(this);
