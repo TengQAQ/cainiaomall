@@ -74,8 +74,10 @@ public class MineFragment extends Fragment {
         User_Dao userDao1 =new User_Dao(getActivity());
         User user2= userDao1.findUser(userid);
         myname.setText(user2.getUser_name());
+        String savepath=getActivity().getFilesDir()+"/"+user2.getUser_avatar();
+        Log.i(TAG, "路径输出: "+savepath);
         if (user2.getUser_avatar() != null){
-            myavatar.setImageBitmap(BitmapFactory.decodeFile(user2.getUser_avatar()));
+            myavatar.setImageBitmap(BitmapFactory.decodeFile(savepath));
         }
 
 

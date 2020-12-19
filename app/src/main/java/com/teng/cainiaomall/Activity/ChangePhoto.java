@@ -11,20 +11,25 @@ import androidx.core.content.FileProvider;
 import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.MediaStore;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.teng.cainiaomall.Dao.User_Dao;
 import com.teng.cainiaomall.R;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Date;
 
 public class ChangePhoto extends AppCompatActivity {
     private static final int REQUEST_CODE_PERMISSIONS_STORAGE = 100;
@@ -121,15 +126,10 @@ public class ChangePhoto extends AppCompatActivity {
                 break;
             case REQUEST_CODE_CROP_IMAGE:
                 if (resultCode == RESULT_OK) {
-                    Bitmap bp = null;
-                    try {
-                        // 将 uri 转成位图形式
-                        bp = BitmapFactory.decodeStream(getContentResolver().openInputStream(getCropImageUri()
-                        ));
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
-                    }
-                    mShowImageView.setImageBitmap(bp);
+                    Intent intent1=new Intent();
+                    intent1.setClass(this,MainActivity.class);
+                    startActivity(intent1);
+
                 }
                 break;
             default:
@@ -149,17 +149,25 @@ public class ChangePhoto extends AppCompatActivity {
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         activity.startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
     }
-    static void captureImage(Activity activity) {
+    void captureImage(Activity activity) {
         // 注意这个路径下的目录需要定义在 Manifest.xml-provider-meta-data 标签中来获得共享权限
         // 否则会抛出 SecurityException 异常
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_HHmmss");//获取当前时间戳
+        Date date = new Date(System.currentTimeMillis());
         File imagePath = new File(activity.getFilesDir(), "myimages");//gn file_paths.xml文件中的files-path标签中的path值一致
-        File newFile = new File(imagePath, System.currentTimeMillis() + ".jpg");
+        File newFile = new File(imagePath, simpleDateFormat.format(date) + ".jpg");
+        String savepath="myimages"+"/"+simpleDateFormat.format(date) + ".jpg";
+        User_Dao userDao =new User_Dao(ChangePhoto.this);
+        SharedPreferences sp=getSharedPreferences("user_rememberpass",MODE_PRIVATE);
+        String username=sp.getString("username","");
+        userDao.change_avatar(username,savepath);
         if (!imagePath.exists()) {
             imagePath.mkdirs();
         }
         // 注意这里需要使用 content:// 形式暴露，否则在 7.0 以上系统会抛出 FileUriExposedException 异常
         mContentUri = FileProvider.getUriForFile(activity, FILE_PROVIDER_AUTHORITY, newFile);
         Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra("savepath",savepath);
         intent.putExtra(MediaStore.EXTRA_OUTPUT, mContentUri);
         intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
         activity.startActivityForResult(intent, REQUEST_CODE_CAPTURE_IMAGE);
@@ -176,19 +184,23 @@ public class ChangePhoto extends AppCompatActivity {
             file.mkdir();
         }
         Intent intent = new Intent("com.android.camera.action.CROP");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_HH_mmss");//获取当前时间戳
+        Date date = new Date(System.currentTimeMillis());
         if (isCaptureImage) {
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             intent.setDataAndType(uri, "image/*");
-            mCropImageUri = Uri.parse("file://" + file.getAbsolutePath() + "/" + System.currentTimeMillis() + ".jpg");
+            mCropImageUri = Uri.parse("file://" + file.getAbsolutePath() + "/" + simpleDateFormat.format(date) + ".jpg");
+            Log.i("TAG", "uri1: "+mContentUri);
             // 这个 outputUri 是要使用 Uri.fromFile(file) 生成的，而不是使用FileProvider.getUriForFile
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mCropImageUri);
             activity.startActivityForResult(intent, REQUEST_CODE_CROP_IMAGE);
         }else{
             /*String IMAGE_FILE_LOCATION = "file:///" + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_PICTURES).toString() +
                     "/myimages/"+System.currentTimeMillis()+".jpg";*/
-            String IMAGE_FILE_LOCATION = "file:///" +  file.getAbsolutePath() + "/"+System.currentTimeMillis()+".jpg";
+            String IMAGE_FILE_LOCATION = "file:///" +  file.getAbsolutePath() + "/"+ simpleDateFormat.format(date) +".jpg";
             intent.setDataAndType(uri, "image/*");
             mCropImageUri= Uri.parse(IMAGE_FILE_LOCATION);
+            Log.i("TAG", "uri2: "+mContentUri);
             intent.putExtra(MediaStore.EXTRA_OUTPUT, mCropImageUri);
             intent.putExtra("outputFormat", Bitmap.CompressFormat.JPEG.toString());
             intent.putExtra("noFaceDetection", true);
