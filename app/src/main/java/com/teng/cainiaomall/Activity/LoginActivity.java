@@ -50,9 +50,9 @@ public class LoginActivity extends AppCompatActivity {
         isremenberpassword=sp.getBoolean("bt_isremember",false);
 
 
-//        Intent intent=getIntent();
-//        String user9277548 =intent.getStringExtra("user_id");
-//        mEditTextUserName.setText(user9277548);
+        Intent intent=getIntent();
+        String user9277548 =intent.getStringExtra("user_id");
+        mEditTextUserName.setText(user9277548);
 
         if (isremenberpassword){
             mEditTextUserName.setText(sp.getString("username",userName));

@@ -40,9 +40,7 @@ public class User {
         return user_money;
     }
 
-    public void setUser_money(Double user_money) {
-        this.user_money = user_money;
-    }
+    public void setUser_money(Double user_money) { this.user_money = user_money; }
 
     public Long getUser_tel() {
         return user_tel;

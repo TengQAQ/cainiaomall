@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Bitmap;
 
 import com.teng.cainiaomall.DB.DBOpenHelp;
 import com.teng.cainiaomall.Model.User;
@@ -41,9 +42,9 @@ public class User_Dao {
     /*
     * 更改账号头像
     * */
-    public void change_avatar(String id,String avatar){
+    public void change_avatar(String id, String avatar){
         db=DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        Cursor cursor=db.rawQuery("update tb_user where user_picPath='"+avatar+"'user_id='"+id+"'",null);
+        Cursor cursor=db.rawQuery("update cm_user set user_avatar='"+avatar+"'where user_id='"+id+"'",null);
         if (cursor.moveToNext()){
             cursor.close();
             db.close();

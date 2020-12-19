@@ -18,13 +18,14 @@
         android:roundIcon="@mipmap/bird"
         android:supportsRtl="true"
         android:theme="@style/Theme.CainiaoMall">
-        <activity android:name=".Activity.Setinformation"></activity>
+        <activity android:name=".Activity.ChangePhoto"></activity>
+        <activity android:name=".Activity.Setinformation" />
 
         <meta-data
             android:name="com.google.android.actions"
             android:resource="@xml/file_path" />
 
-        <activity android:name=".Activity.MainActivity"></activity>
+        <activity android:name=".Activity.MainActivity" />
         <activity android:name=".Activity.RetrievePasswordActivity" />
         <activity android:name=".Activity.LoginActivity">
             <intent-filter>

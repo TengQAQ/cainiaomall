@@ -30,6 +30,11 @@ public class Setinformation extends AppCompatActivity {
         modification_commit=findViewById(R.id.modification_commit);
         modification_back=findViewById(R.id.modification_back);
 
+        modification_back.setOnClickListener(v->{
+
+        });
+
+
         modification_commit.setOnClickListener(v->{
             password=modification_password.getText().toString();
             passwordagain=modification_passwordagain.getText().toString();
