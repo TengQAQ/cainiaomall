@@ -145,6 +145,7 @@ public class ChangePhoto extends AppCompatActivity {
         //Intent.ACTION_GET_CONTENT = "android.intent.action.GET_CONTENT"
         intent.setType("image/*");
         startActivityForResult(intent, PICK_PHOTO); // 打开相册*/
+
         Intent intent = new Intent(Intent.ACTION_PICK, null);
         intent.setDataAndType(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, "image/*");
         activity.startActivityForResult(intent, REQUEST_CODE_PICK_IMAGE);
