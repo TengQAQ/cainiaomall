@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title=" "
+            android:background="#fff"
+            android:gravity="center_horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="50dp">
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="设置"
+                android:textSize="16dp" />
+        </androidx.appcompat.widget.Toolbar>
+    </com.google.android.material.appbar.AppBarLayout>
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="50dp" />
+            <LinearLayout
+                android:id="@+id/linheared"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="400dp"
+                    android:layout_height="160dp"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="40dp"
+                        android:orientation="horizontal">
+
+                        <com.makeramen.roundedimageview.RoundedImageView
+                            android:id="@+id/myicon"
+                            android:layout_width="90dp"
+                            android:layout_height="90dp"
+                            android:layout_marginLeft="20dp"
+                            app:riv_border_color="#333333"
+                            app:riv_border_width="2dp"
+                            app:riv_oval="true" />
+
+                        <TextView
+                            android:layout_width="278dp"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:layout_marginLeft="8dp"
+                            android:text="菜鸟商城账号：********"
+                            android:textSize="14dp" />
+
+                        <!--  <TextView
+                        android:id="@+id/showuser"
+                        android:layout_width="160dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:layout_margin="10dp"
+                        android:layout_marginLeft="10dp"
+                        android:gravity="left"
+                        android:textColor="#fff"
+                        android:textSize="25dp" />  -->
+
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ddxq"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="账号与安全"
+                    android:textSize="14dp" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/jiantou1" />
+            </LinearLayout>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:id="@+id/cz"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="收货地址"
+                    android:textSize="14dp" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/jiantou1" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/wdxx"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="支付设置"
+                    android:textSize="14dp" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/jiantou1" />
+
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="10dp" />
+
+            <LinearLayout
+                android:id="@+id/yjfh"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="意见反馈"
+                    android:textSize="14dp" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/jiantou1" />
+
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/gywm"
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="8dp"
+                    android:layout_weight="1"
+                    android:text="关于菜鸟商城"
+                    android:textSize="14dp" />
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="23dp"
+                    android:layout_gravity="center"
+                    android:layout_marginRight="30dp"
+                    android:src="@mipmap/jiantou1" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/regist_commit"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:background="@color/background1"
+                    android:gravity="center"
+                    android:text="切换账号"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_gravity="center">
+
+                <TextView
+                    android:id="@+id/regist_back"
+                    android:layout_width="140dp"
+                    android:layout_height="40dp"
+                    android:background="@color/background1"
+                    android:gravity="center"
+                    android:text="退出登录"
+                    android:textSize="18dp"/>
+
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+</FrameLayout>

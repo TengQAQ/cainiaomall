@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:layout_width="match_parent"
+    android:layout_height="97dp"
+    android:layout_marginTop="8dp"
+    android:background="@color/cadetblue"
+    android:orientation="horizontal"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <ImageView
+        android:id="@+id/g_picture"
+        android:layout_width="100dp"
+        android:layout_height="90dp"/>
+
+    <LinearLayout
+        android:layout_width="252dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/g_name"
+            android:layout_width="250dp"
+            android:layout_height="30dp"
+            android:layout_marginLeft="12dp"
+            android:hint="商品名称"
+            android:textSize="24dp" />
+
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="12dp"
+            android:layout_below="@id/g_name"
+            android:hint="商品描述"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="12dp"
+            android:hint="价格"/>
+
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="71dp"
+        android:layout_marginTop="15dp"
+        android:src="@mipmap/shoucan" />
+
+
+</LinearLayout>

@@ -18,7 +18,11 @@
         android:roundIcon="@mipmap/bird"
         android:supportsRtl="true"
         android:theme="@style/Theme.CainiaoMall">
-        <activity android:name=".Activity.ChangePhoto"></activity>
+        <activity android:name=".Activity.User_set"></activity>
+        <activity android:name=".Activity.User_personal_data" />
+        <activity android:name=".Activity.User_collection" />
+        <activity android:name=".Activity.User_wallet" />
+        <activity android:name=".Activity.ChangePhoto" />
         <activity android:name=".Activity.Setinformation" />
 
         <meta-data
