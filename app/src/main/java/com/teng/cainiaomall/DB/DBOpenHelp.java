@@ -34,10 +34,10 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "good_price double(10)," +
                 "good_ztype varchar(10)," +
                 "good_time time," +
-                "good_user_id varchar(10)," +
-                "good_note varchar(500)," +
-                "good_shzt varchar(2)," +
-                "good_sx varchar(2) not null);");
+                "good_user_id varchar(10)," +//商家id
+                "good_note varchar(500)," +//备注
+                "good_shzt varchar(2)," +//审核状态
+                "good_sx varchar(2) not null);");//属性
         db.execSQL("insert into 'cm_good' values('001','001',null,'无',12.5,'小零食','2020-01-01','001','haochi','0','0')");
     }
 

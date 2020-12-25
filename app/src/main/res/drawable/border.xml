@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+    android:shape="rectamgle" >
+    <solid android:color="@color/white"></solid>
+    <!-- corners设置圆角，只适用于rectangle
+          数值较大时,就变成了弧边形状例如>=200时
+      -->
+    <corners android:radius="20dp"></corners>
+
+</shape>
