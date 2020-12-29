@@ -1,23 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:layout_width="match_parent"
-    android:layout_height="97dp"
-    android:layout_marginTop="8dp"
-    android:background="@color/cadetblue"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/g_picture2"
+        android:id="@+id/g_picture"
         android:layout_width="100dp"
-        android:layout_height="90dp"/>
+        android:layout_height="100dp"/>
 
     <LinearLayout
         android:layout_width="252dp"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/g_name2"
+            android:id="@+id/g_name"
             android:layout_width="250dp"
             android:layout_height="30dp"
             android:layout_marginLeft="12dp"
@@ -25,26 +24,28 @@
             android:textSize="24dp" />
 
         <TextView
+            android:id="@+id/g_describe"
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="12dp"
             android:layout_below="@id/g_name"
-            android:hint="商品描述"
-            />
+            android:layout_marginLeft="12dp"
+            android:hint="商品描述商品描述商品描述商品描述商品描述商品描述"
+            app:tabSelectedTextColor="@android:color/holo_blue_bright" />
 
         <TextView
+            android:id="@+id/g_money"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="12dp"
-            android:hint="价格"/>
+            android:gravity="center"
+            android:textSize="20dp"
+            android:hint="0.00"/>
 
     </LinearLayout>
-
     <ImageView
+        android:id="@+id/is_commit"
         android:layout_width="45dp"
         android:layout_height="71dp"
         android:layout_marginTop="15dp"
         android:src="@mipmap/shoucan" />
-
 
 </LinearLayout>

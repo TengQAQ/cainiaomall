@@ -16,6 +16,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/top"
                 android:layout_width="match_parent"
@@ -37,16 +38,14 @@
                     android:orientation="horizontal"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    tools:ignore="MissingConstraints">
+                    >
 
-                    <com.makeramen.roundedimageview.RoundedImageView
+                    <ImageView
                         android:id="@+id/myavatar"
                         android:layout_width="80dp"
                         android:layout_height="80dp"
                         android:layout_marginLeft="20dp"
                         android:src="@mipmap/bird"/>
-
-
                     
                     <TextView
                         android:id="@+id/myname"
@@ -75,7 +74,8 @@
                             android:textColor="@color/black"
                             android:textSize="18dp"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:ignore="MissingConstraints" />
 
                         <ImageView
                             android:layout_width="30dp"

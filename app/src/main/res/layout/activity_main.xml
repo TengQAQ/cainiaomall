@@ -34,16 +34,16 @@
             android:textSize="13sp"
             android:gravity="center_horizontal"
             android:layout_weight="1"/>
-        <TextView
-            android:id="@+id/tv_buy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="购买"
-            android:drawableTop="@mipmap/buy"
-            android:textSize="13sp"
-            android:gravity="center_horizontal"
-            android:layout_weight="1"
-            />
+<!--        <TextView-->
+<!--            android:id="@+id/tv_buy"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="购买"-->
+<!--            android:drawableTop="@mipmap/buy"-->
+<!--            android:textSize="13sp"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_weight="1"-->
+<!--            />-->
         <TextView
             android:id="@+id/tv_sell"
             android:layout_width="wrap_content"

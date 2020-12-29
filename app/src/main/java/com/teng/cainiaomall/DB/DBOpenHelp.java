@@ -1,4 +1,4 @@
-        package com.teng.cainiaomall.DB;
+package com.teng.cainiaomall.DB;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBOpenHelp extends SQLiteOpenHelper {
     final static String DBNAME="cainiaomall.db";
-    final static int version=3;
+    final static int version=6;
     public DBOpenHelp(@Nullable Context context) {
         super(context, DBNAME, null, version);
     }
@@ -33,17 +33,22 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "good_describe varchar(400)," +
                 "good_price double(10)," +
                 "good_ztype varchar(10)," +
-                "good_time time," +
+                "good_time varchar(30)," +
                 "good_user_id varchar(10)," +//商家id
                 "good_note varchar(500)," +//备注
-                "good_shzt varchar(2)," +//审核状态
-                "good_sx varchar(2) not null);");//属性
-        db.execSQL("insert into 'cm_good' values('001','001',null,'无',12.5,'小零食','2020-01-01','001','haochi','0','0')");
+                "good_status varchar(2)," +//审核状态
+                "good_sx varchar(2) not null);");//属性0:实体 1;虚拟
+//        db.execSQL("insert into 'cm_good' values('001','001',null,'无',12.5,'小零食','2020-01-01','001','haochi','0','0')");
+        db.execSQL("CREATE TABLE 'cm_admin'(admin_id varchar(10) PRIMARY KEY," +
+                "admin_password varchar(20) not null," +
+                "admin_tel int(11));");
+        db.execSQL("insert into 'cm_admin' values('123','123','17623876031')");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists cm_user");
+        db.execSQL("drop table if exists cm_good");
         onCreate(db);
     }
 }

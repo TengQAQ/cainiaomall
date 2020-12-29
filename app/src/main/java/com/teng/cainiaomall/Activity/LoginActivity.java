@@ -17,7 +17,9 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.teng.cainiaomall.Dao.Admin_Dao;
 import com.teng.cainiaomall.Dao.User_Dao;
+import com.teng.cainiaomall.Model.Admin;
 import com.teng.cainiaomall.Model.User;
 import com.teng.cainiaomall.R;
 
@@ -90,33 +92,49 @@ public class LoginActivity extends AppCompatActivity {
             }else {
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy年MM月dd日HH时");//获取当前时间戳
                 Date date = new Date(System.currentTimeMillis());
+                Admin_Dao admin_dao = new Admin_Dao(LoginActivity.this);
+                Admin admin=admin_dao.adminLogin(userName);
+                if (admin == null) {
 
-                User user=user_dao.findUser(userName);
-                if (user.getUser_id().equals(userName)&&user.getUser_password().equals(userPasswd)){
-                    if (user.getUser_statue() == 0){
-                        if (mremenberpassword.isChecked()){
-                            editor.putBoolean("bt_isremember",true);
-                            editor.putString("logintime",simpleDateFormat.format(date));
-                            editor.putString("password",userPasswd);
-                            editor.putString("username",userName);
-                        }else {
-                            editor.clear();
-                        }
-                        editor.commit();
-                        Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
-                        Intent intent3 =new Intent();
-                        intent3.setClass(LoginActivity.this,MainActivity.class);
-                        startActivity(intent3);
+                }else {
+                    if (admin.getAdmin_id().equals(userName)&&admin.getAdmin_password().equals(userPasswd)){
+                        Intent intent4 =new Intent();
+                        intent4.setClass(LoginActivity.this,Admin_main.class);
+                        startActivity(intent4);
                         finish();
                     }
-                    else if (user.getUser_statue() == 1){
-                        Toast.makeText(LoginActivity.this, "请耐心等待管理员审核", Toast.LENGTH_SHORT).show();
-                    }else {
-                        Toast.makeText(LoginActivity.this,"账号已被封禁,无法登录",Toast.LENGTH_LONG).show();
-                    }
-                }else {
-                    Toast.makeText(LoginActivity.this,"账号或者密码错误",Toast.LENGTH_LONG).show();
+                    return;
                 }
+
+                User user=user_dao.findUser(userName);
+                if (user==null){}else {
+                    if (user.getUser_id().equals(userName)&&user.getUser_password().equals(userPasswd)){
+                        if (user.getUser_statue() == 0){
+                            if (mremenberpassword.isChecked()){
+                                editor.putBoolean("bt_isremember",true);
+                                editor.putString("logintime",simpleDateFormat.format(date));
+                                editor.putString("password",userPasswd);
+                                editor.putString("username",userName);
+                            }else {
+                                editor.clear();
+                            }
+                            editor.commit();
+                            Toast.makeText(LoginActivity.this, "登录成功", Toast.LENGTH_SHORT).show();
+                            Intent intent3 =new Intent();
+                            intent3.setClass(LoginActivity.this,MainActivity.class);
+                            startActivity(intent3);
+                            finish();
+                        }
+                        else if (user.getUser_statue() == 1){
+                            Toast.makeText(LoginActivity.this, "请耐心等待管理员审核", Toast.LENGTH_SHORT).show();
+                        }else {
+                            Toast.makeText(LoginActivity.this,"账号已被封禁,无法登录",Toast.LENGTH_LONG).show();
+                        }
+                    }else {
+                        Toast.makeText(LoginActivity.this,"账号或者密码错误",Toast.LENGTH_LONG).show();
+                    }
+                }
+
             }
         });
 

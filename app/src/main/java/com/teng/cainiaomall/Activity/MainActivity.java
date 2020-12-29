@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.teng.cainiaomall.Fragment.BuyFragment;
 import com.teng.cainiaomall.Fragment.HomeFragment;
+import com.teng.cainiaomall.Fragment.MessageFragment;
 import com.teng.cainiaomall.Fragment.MineFragment;
 import com.teng.cainiaomall.Fragment.SellFragment;
 import com.teng.cainiaomall.R;
@@ -24,7 +25,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private int mFragmentId=0;
     //标记Fragment
     public static final int Fragment_Home =0;
-    public static final int Fragment_Buy =1;
+//    public static final int Fragment_Buy =1;
     public static final int Fragment_Sell =2;
     public static final int Fragment_Message =3;
     public static final int Fragment_Mine =4;
@@ -34,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mtv_home=findViewById(R.id.tv_home);
-        mtv_buy=findViewById(R.id.tv_buy);
+//        mtv_buy=findViewById(R.id.tv_buy);
         mtv_sell=findViewById(R.id.tv_sell);
         mtv_message=findViewById(R.id.tv_message);
         mtv_mine=findViewById(R.id.tv_mine);
@@ -49,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         String sentuser = intent.getStringExtra("user_id");
 
         mtv_home.setOnClickListener(this);
-        mtv_buy.setOnClickListener(this);
+//        mtv_buy.setOnClickListener(this);
         mtv_sell.setOnClickListener(this);
         mtv_message.setOnClickListener(this);
         mtv_mine.setOnClickListener(this);
@@ -60,7 +61,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         FragmentManager mFragmentManager = getSupportFragmentManager();
         //通过FragmentManager获取保存在FragmentTransaction中的Fragment实例
         mFragment_Home = mFragmentManager.findFragmentByTag("HomeFragment");
-        mFragment_Buy = mFragmentManager.findFragmentByTag("BuyFragment");
+//        mFragment_Buy = mFragmentManager.findFragmentByTag("BuyFragment");
         mFragment_Sell = mFragmentManager.findFragmentByTag("SellFragment");
         mFragment_Messagge = mFragmentManager.findFragmentByTag("MessageFragment");
         mFragment_Mine = mFragmentManager.findFragmentByTag("MineFragment");
@@ -92,18 +93,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                     mTransaction.show(mFragment_Home);
                 }
                 break;
-            case Fragment_Buy:
-                mFragmentId = Fragment_Buy;
-                mtv_buy.setTextColor(getResources().getColor(R.color.colorTextPressed));
-                mtv_buy.setCompoundDrawablesWithIntrinsicBounds(0,
-                        R.mipmap.buy_1,0,0);
-                if(mFragment_Buy == null){
-                    mFragment_Buy = new BuyFragment();
-                    mTransaction.add(R.id.container, mFragment_Buy, "BuyFragment");
-                }else {
-                    mTransaction.show(mFragment_Buy);
-                }
-                break;
+//            case Fragment_Buy:
+//                mFragmentId = Fragment_Buy;
+//                mtv_buy.setTextColor(getResources().getColor(R.color.colorTextPressed));
+//                mtv_buy.setCompoundDrawablesWithIntrinsicBounds(0,
+//                        R.mipmap.buy_1,0,0);
+//                if(mFragment_Buy == null){
+//                    mFragment_Buy = new BuyFragment();
+//                    mTransaction.add(R.id.container, mFragment_Buy, "BuyFragment");
+//                }else {
+//                    mTransaction.show(mFragment_Buy);
+//                }
+//                break;
             case Fragment_Sell:
                 mFragmentId = Fragment_Sell;
                 mtv_sell.setTextColor(getResources().getColor(R.color.colorTextPressed));
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mtv_message.setCompoundDrawablesWithIntrinsicBounds(0,
                         R.mipmap.message_1,0,0);
                 if(mFragment_Messagge == null){
-                    mFragment_Messagge = new SellFragment();
+                    mFragment_Messagge = new MessageFragment();
                     mTransaction.add(R.id.container, mFragment_Messagge, "MessageFragment");
                 }else {
                     mTransaction.show(mFragment_Messagge);
@@ -155,14 +156,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mtv_home.setCompoundDrawablesWithIntrinsicBounds(0,
                     R.mipmap.homepage_1,0,0);
         }
-        if(mFragment_Buy != null){
-            //隐藏Fragment
-            transaction.hide(mFragment_Buy);
-            //将对应菜单栏设置为默认状态
-            mtv_buy.setTextColor(getResources().getColor(R.color.colorTextNormal));
-            mtv_buy.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.buy,0,0);
-        }
+//        if(mFragment_Buy != null){
+//            //隐藏Fragment
+//            transaction.hide(mFragment_Buy);
+//            //将对应菜单栏设置为默认状态
+//            mtv_buy.setTextColor(getResources().getColor(R.color.colorTextNormal));
+//            mtv_buy.setCompoundDrawablesWithIntrinsicBounds(0,
+//                    R.mipmap.buy,0,0);
+//        }
         if(mFragment_Sell != null){
             //隐藏Fragment
             transaction.hide(mFragment_Sell);
@@ -177,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //将对应菜单栏设置为默认状态
             mtv_message.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mtv_message.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.sell,0,0);
+                    R.mipmap.message,0,0);
         }
         if(mFragment_Mine != null){
             //隐藏Fragment
@@ -185,7 +186,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //将对应菜单栏设置为默认状态
             mtv_mine.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mtv_mine.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.sell,0,0);
+                    R.mipmap.usersetting,0,0);
         }
     }
 
@@ -198,9 +199,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.tv_home:
                 setFragment(Fragment_Home);
                 break;
-            case R.id.tv_buy:
-                setFragment(Fragment_Buy);
-                break;
+//            case R.id.tv_buy:
+//                setFragment(Fragment_Buy);
+//                break;
             case R.id.tv_sell:
                 setFragment(Fragment_Sell);
                 break;

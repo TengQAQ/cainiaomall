@@ -1,14 +1,189 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.MessageFragment">
+    android:orientation="vertical">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/my"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="50dp"
+        android:orientation="horizontal">
 
-</FrameLayout>
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@mipmap/fh" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="110dp"
+            android:text="商品浏览"
+            android:textSize="28dp"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="43dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <EditText
+                android:id="@+id/edittext"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="10dp"
+                android:hint="请输入搜索内容"
+                android:maxLength="10"
+                android:paddingLeft="15dp"
+                android:singleLine="true"
+                android:textSize="20dp" />
+
+            <ImageView
+                android:id="@+id/imageview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:paddingRight="20dp"
+
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:text="搜索"
+            android:textColor="@color/lightyellow"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/listview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </ListView>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="学习用品"
+            android:textSize="14dp" />
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:text="电子数码"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:text="衣服包包"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:text="体育用品"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:text="生活用品"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+        <TextView
+            android:layout_width="68dp"
+            android:layout_height="match_parent"
+            android:text="游戏账号"
+            android:gravity="center"
+            android:textSize="14dp"/>
+
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="97dp"
+            android:layout_marginTop="8dp"
+            android:background="@color/lightyellow"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/g_picture1"
+                android:layout_width="100dp"
+                android:layout_height="90dp"/>
+
+            <LinearLayout
+                android:layout_width="252dp"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/g_name1"
+                    android:layout_width="250dp"
+                    android:layout_height="30dp"
+                    android:layout_marginLeft="12dp"
+                    android:hint="商品名称"
+                    android:textSize="24dp" />
+
+                <TextView
+                    android:layout_width="250dp"
+                    android:layout_height="40dp"
+                    android:layout_below="@id/g_name"
+                    android:layout_marginLeft="12dp"
+                    android:text="商品描述商品描述商品描述商品描述商品描述商品描述"
+                    app:tabSelectedTextColor="@android:color/holo_blue_bright" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="12dp"
+                    android:text="价格"/>
+
+            </LinearLayout>
+            <ImageView
+                android:layout_width="45dp"
+                android:layout_height="71dp"
+                android:layout_marginTop="15dp"
+                android:src="@mipmap/shoucan" />
+
+        </LinearLayout>
+
+    </ScrollView>
+
+
+</LinearLayout>

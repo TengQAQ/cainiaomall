@@ -7,7 +7,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Matrix;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
@@ -78,7 +80,11 @@ public class MineFragment extends Fragment {
         String savepath = getActivity().getFilesDir() + "/" + user2.getUser_avatar();
         Log.i(TAG, "路径输出: " + savepath);
         if (user2.getUser_avatar() != null) {
-            myavatar.setImageBitmap(BitmapFactory.decodeFile(savepath));
+            Bitmap bitmap =BitmapFactory.decodeFile(savepath);
+            Matrix matrix =new Matrix();
+            matrix.setRotate(90);
+            bitmap = Bitmap.createBitmap(bitmap,0,0,bitmap.getWidth(),bitmap.getHeight(),matrix,true);
+            myavatar.setImageBitmap(bitmap);
         }
 
         user_wallet.setOnClickListener(v -> {
