@@ -4,16 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.teng.cainiaomall.Dao.Good_Dao;
 import com.teng.cainiaomall.Model.Admin;
@@ -36,6 +40,17 @@ public class CommodityAudit extends AppCompatActivity {
         list=good_dao.goodaudit();
         MyListAdapter myListAdapter=new MyListAdapter(CommodityAudit.this,list);//实例化适配器
         listView.setAdapter(myListAdapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                int good_id=list.get(position).getGood_id();
+                Intent intent = new Intent();
+                intent.putExtra("good_id",good_id);
+                intent.setClass(CommodityAudit.this,Good_details.class);
+                Toast.makeText(CommodityAudit.this,"您点击了选项卡哦"+good_id,Toast.LENGTH_LONG).show();
+
+            }
+        });
     }
 
     class MyListAdapter extends BaseAdapter {
@@ -74,7 +89,7 @@ public class CommodityAudit extends AppCompatActivity {
             }
             Good good=list.get(position);
             viewHolder.money.setText(good.getGood_price()+"");
-            Bitmap bitmap= BitmapFactory.decodeFile( good.getGood_picpath());
+            Bitmap bitmap= BitmapFactory.decodeFile(getFilesDir()+"/"+good.getGood_picpath());
             viewHolder.tupian.setImageBitmap(bitmap);
             viewHolder.name.setText(good.getGood_name());
             viewHolder.describe.setText(good.getGood_describe()+"");

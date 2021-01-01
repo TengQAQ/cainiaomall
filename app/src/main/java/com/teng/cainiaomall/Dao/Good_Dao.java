@@ -31,6 +31,7 @@ public class Good_Dao {
         contentValues.put("good_price", good.getGood_price());
         contentValues.put("good_time", good.getGood_time());
         contentValues.put("good_ztype", good.getGood_ztype());
+        contentValues.put("good_user_id",good.getGood_user_id());
         contentValues.put("good_status", 0);
         contentValues.put("good_picpath",good.getGood_picpath());
         contentValues.put("good_sx", good.getGood_sx());
@@ -45,7 +46,7 @@ public class Good_Dao {
         ArrayList<Good> resultlist=new ArrayList<>();
         db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
         final Cursor cursor = db.rawQuery("select * from cm_good where good_status='" + 0 + "'", null);
-        if (cursor.moveToNext()){
+        while (cursor.moveToNext()){
             Good good=new Good();
             good.setGood_user_id(cursor.getString(cursor.getColumnIndex("good_user_id")));
             good.setGood_ztype(cursor.getString(cursor.getColumnIndex("good_ztype")));
@@ -57,10 +58,18 @@ public class Good_Dao {
             good.setGood_time(cursor.getString(cursor.getColumnIndex("good_time")));
             good.setGood_sx(cursor.getString(cursor.getColumnIndex("good_sx")));
             resultlist.add(good);
-            return resultlist;
         }
         cursor.close();
         db.close();
-        return null;
+        return resultlist;
+    }
+
+    /*
+     * 审核商品
+     *
+     * */
+    public void through_goods(String good_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor = db.rawQuery("update cm_good set good_status = 1 where good_id='"+ good_id+"'",null);
     }
 }

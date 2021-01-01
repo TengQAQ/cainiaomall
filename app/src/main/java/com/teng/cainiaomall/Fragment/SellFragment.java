@@ -137,6 +137,7 @@ public class SellFragment extends Fragment {
 
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("user_rememberpass", Context.MODE_PRIVATE);
             String username=sharedPreferences.getString("username","");
+            Log.i(TAG, "onCreateView: "+username);
 
             Good good =new Good();
             good.setGood_name(g_name1);
@@ -144,7 +145,6 @@ public class SellFragment extends Fragment {
             good.setGood_price(Double.valueOf(g_money1));
             good.setGood_sx(g_sx1);
             good.setGood_ztype(nicespinner21);
-            Log.i(TAG, "ces1: "+nicespinner21);
             good.setGood_time(imagdate);
             good.setGood_picpath(savepath);
             good.setGood_user_id(username);
