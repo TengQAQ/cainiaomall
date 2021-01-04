@@ -6,11 +6,11 @@ import android.os.Bundle;
 
 import com.teng.cainiaomall.R;
 
-public class AdminAudit extends AppCompatActivity {
+public class User_details extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_admin_audit);
+        setContentView(R.layout.activity_user_details);
     }
 }

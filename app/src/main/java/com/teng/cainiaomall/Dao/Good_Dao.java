@@ -48,6 +48,34 @@ public class Good_Dao {
         final Cursor cursor = db.rawQuery("select * from cm_good where good_status='" + 0 + "'", null);
         while (cursor.moveToNext()){
             Good good=new Good();
+            good.setGood_id(cursor.getInt(cursor.getColumnIndex("good_id")));
+            good.setGood_user_id(cursor.getString(cursor.getColumnIndex("good_user_id")));
+            good.setGood_ztype(cursor.getString(cursor.getColumnIndex("good_ztype")));
+            good.setGood_describe(cursor.getString(cursor.getColumnIndex("good_describe")));
+            good.setGood_name(cursor.getString(cursor.getColumnIndex("good_name")));
+            good.setGood_price(cursor.getDouble(cursor.getColumnIndex("good_price")));
+            good.setGood_status(cursor.getString(cursor.getColumnIndex("good_status")));
+            good.setGood_picpath(cursor.getString(cursor.getColumnIndex("good_picpath")));
+            good.setGood_time(cursor.getString(cursor.getColumnIndex("good_time")));
+            good.setGood_sx(cursor.getString(cursor.getColumnIndex("good_sx")));
+            resultlist.add(good);
+        }
+        cursor.close();
+        db.close();
+        return resultlist;
+    }
+
+    /*
+     * 未审核商品
+     *
+     * */
+    public ArrayList<Good> sellgoodlist(){
+        ArrayList<Good> resultlist=new ArrayList<>();
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        final Cursor cursor = db.rawQuery("select * from cm_good where good_status='" + 1 + "'", null);
+        while (cursor.moveToNext()){
+            Good good=new Good();
+            good.setGood_id(cursor.getInt(cursor.getColumnIndex("good_id")));
             good.setGood_user_id(cursor.getString(cursor.getColumnIndex("good_user_id")));
             good.setGood_ztype(cursor.getString(cursor.getColumnIndex("good_ztype")));
             good.setGood_describe(cursor.getString(cursor.getColumnIndex("good_describe")));
@@ -72,4 +100,65 @@ public class Good_Dao {
         db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
         Cursor cursor = db.rawQuery("update cm_good set good_status = 1 where good_id='"+ good_id+"'",null);
     }
+
+    /*
+     * 审核通过
+     *
+     * */
+    public boolean good_auditsuccess(String good_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("update cm_good set good_status = 1 where good_id='"+good_id+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+            return true;
+        }
+        cursor.close();
+        db.close();
+        return false;
+    }
+
+    /*
+     * 审核不通过
+     *
+     * */
+    public int good_auditfailure(String good_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("update cm_good set good_status= 2 where good_id='"+good_id+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+        }
+        cursor.close();
+        db.close();
+        return 1;
+    }
+
+    /**
+     *
+     * 搜索某一商品详情
+     * 传值：good_id
+     */
+    public Good findgood(int good_id) {
+        db = DBOpenHelper.getReadableDatabase();
+        final Cursor cursor = db.rawQuery("select * from cm_good where good_id ='" + good_id + "'", null);
+        if (cursor.moveToNext()){
+            Good good=new Good();
+            good.setGood_id(cursor.getInt(cursor.getColumnIndex("good_id")));
+            good.setGood_user_id(cursor.getString(cursor.getColumnIndex("good_user_id")));
+            good.setGood_ztype(cursor.getString(cursor.getColumnIndex("good_ztype")));
+            good.setGood_describe(cursor.getString(cursor.getColumnIndex("good_describe")));
+            good.setGood_name(cursor.getString(cursor.getColumnIndex("good_name")));
+            good.setGood_price(cursor.getDouble(cursor.getColumnIndex("good_price")));
+            good.setGood_status(cursor.getString(cursor.getColumnIndex("good_status")));
+            good.setGood_picpath(cursor.getString(cursor.getColumnIndex("good_picpath")));
+            good.setGood_time(cursor.getString(cursor.getColumnIndex("good_time")));
+            good.setGood_sx(cursor.getString(cursor.getColumnIndex("good_sx")));
+            return good;
+        }
+        cursor.close();
+        db.close();
+        return null;
+    }
+
 }

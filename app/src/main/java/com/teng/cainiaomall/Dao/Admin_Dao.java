@@ -6,7 +6,10 @@ import android.database.sqlite.SQLiteDatabase;
 
 import com.teng.cainiaomall.DB.DBOpenHelp;
 import com.teng.cainiaomall.Model.Admin;
+import com.teng.cainiaomall.Model.Good;
 import com.teng.cainiaomall.Model.User;
+
+import java.util.ArrayList;
 
 public class Admin_Dao {
     private DBOpenHelp DBOpenHelper;
@@ -34,4 +37,5 @@ public class Admin_Dao {
         db.close();
         return null;
     }
+
 }

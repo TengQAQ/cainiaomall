@@ -109,7 +109,7 @@ public class LoginActivity extends AppCompatActivity {
                 User user=user_dao.findUser(userName);
                 if (user==null){}else {
                     if (user.getUser_id().equals(userName)&&user.getUser_password().equals(userPasswd)){
-                        if (user.getUser_statue() == 0){
+                        if (user.getUser_statue() == 1){//1正常登录
                             if (mremenberpassword.isChecked()){
                                 editor.putBoolean("bt_isremember",true);
                                 editor.putString("logintime",simpleDateFormat.format(date));
@@ -125,10 +125,10 @@ public class LoginActivity extends AppCompatActivity {
                             startActivity(intent3);
                             finish();
                         }
-                        else if (user.getUser_statue() == 1){
+                        else if (user.getUser_statue() == 2){
                             Toast.makeText(LoginActivity.this, "请耐心等待管理员审核", Toast.LENGTH_SHORT).show();
                         }else {
-                            Toast.makeText(LoginActivity.this,"账号已被封禁,无法登录",Toast.LENGTH_LONG).show();
+                            Toast.makeText(LoginActivity.this,"账号异常,无法登录",Toast.LENGTH_LONG).show();
                         }
                     }else {
                         Toast.makeText(LoginActivity.this,"账号或者密码错误",Toast.LENGTH_LONG).show();

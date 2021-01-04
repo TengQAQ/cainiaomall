@@ -1,9 +1,11 @@
 package com.teng.cainiaomall.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -20,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.teng.cainiaomall.Dao.Good_Dao;
+import com.teng.cainiaomall.Dao.User_Dao;
 import com.teng.cainiaomall.Model.Admin;
 import com.teng.cainiaomall.Model.Good;
 import com.teng.cainiaomall.R;
@@ -43,12 +46,34 @@ public class CommodityAudit extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                int good_id=list.get(position).getGood_id();
-                Intent intent = new Intent();
-                intent.putExtra("good_id",good_id);
-                intent.setClass(CommodityAudit.this,Good_details.class);
-                Toast.makeText(CommodityAudit.this,"您点击了选项卡哦"+good_id,Toast.LENGTH_LONG).show();
+                String good_id= String.valueOf(list.get(position).getGood_id());
+                String type[]=new String[2];
+                type[0]="审核通过";
+                type[1]="审核不通过";
+                AlertDialog.Builder builder=new AlertDialog.Builder(CommodityAudit.this);
+                builder.setTitle("审核情况");
+                builder.setItems(type, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        if(which==0){
+//                            Log.i("用户id：", "onClick: "+user_id);
+                            good_dao.good_auditsuccess(good_id);
+                            Good_Dao good_dao2 = new Good_Dao(CommodityAudit.this);
+                            list= good_dao2.sellgoodlist();
+                            MyListAdapter myListAdapter=new MyListAdapter(CommodityAudit.this,list);//实例化适配器
+                            listView.setAdapter(myListAdapter);
+                        }
+                        else if(which==1){
+                            good_dao.good_auditfailure(good_id);
+                            Good_Dao good_dao1 = new Good_Dao(CommodityAudit.this);
+                            list= good_dao1.sellgoodlist();
+                            MyListAdapter myListAdapter=new MyListAdapter(CommodityAudit.this,list);//实例化适配器
+                            listView.setAdapter(myListAdapter);
 
+                        }
+                    }
+                });
+                builder.show();
             }
         });
     }

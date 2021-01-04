@@ -38,11 +38,16 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "good_note varchar(500)," +//备注
                 "good_status varchar(2)," +//审核状态
                 "good_sx varchar(2) not null);");//属性0:实体 1;虚拟
-//        db.execSQL("insert into 'cm_good' values('001','001',null,'无',12.5,'小零食','2020-01-01','001','haochi','0','0')");
         db.execSQL("CREATE TABLE 'cm_admin'(admin_id varchar(10) PRIMARY KEY," +
                 "admin_password varchar(20) not null," +
                 "admin_tel int(11));");
         db.execSQL("insert into 'cm_admin' values('123','123','17623876031')");
+
+        db.execSQL("CREATE TABLE 'cm_cart'(cart_id varchar(10) PRIMARY KEY AUTOINCREMENT," +
+                "cart_user_id varchar(10) not null," +
+                "cart_good_id int(11)," +
+                "cart_good_user_id varchar(10)," +
+                "cart_money double(10));");
     }
 
     @Override

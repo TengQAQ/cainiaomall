@@ -18,7 +18,7 @@
         android:roundIcon="@mipmap/bird"
         android:supportsRtl="true"
         android:theme="@style/Theme.CainiaoMall">
-        <activity android:name=".Activity.AdminAudit"></activity>
+        <activity android:name=".Activity.User_details"></activity>
         <activity android:name=".Activity.Good_details" />
         <activity android:name=".Activity.CommodityAudit" />
         <activity android:name=".Activity.UserAudit" />
