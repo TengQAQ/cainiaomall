@@ -23,10 +23,10 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "user_avatar varchar(200)," +
                 "user_money double(20,0)," +
                 "user_tel int(11));");
-
         db.execSQL("insert into 'cm_user' values ('001','123456','秦腾辉',0,null,1.0,17623876031)");
         db.execSQL("insert into 'cm_user' values ('002','123456','刘立杰',1,null,1.0,17623876031)");
         db.execSQL("insert into 'cm_user' values ('003','123456','李文平',2,null,1.0,17623876031)");
+
         db.execSQL("CREATE TABLE 'cm_good'(good_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "good_name varchar(30)," +
                 "good_picpath varchar(200)," +
@@ -38,15 +38,18 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "good_note varchar(500)," +//备注
                 "good_status varchar(2)," +//审核状态
                 "good_sx varchar(2) not null);");//属性0:实体 1;虚拟
+
         db.execSQL("CREATE TABLE 'cm_admin'(admin_id varchar(10) PRIMARY KEY," +
                 "admin_password varchar(20) not null," +
                 "admin_tel int(11));");
         db.execSQL("insert into 'cm_admin' values('123','123','17623876031')");
 
-        db.execSQL("CREATE TABLE 'cm_cart'(cart_id varchar(10) PRIMARY KEY AUTOINCREMENT," +
+        db.execSQL("CREATE TABLE 'cm_cart'(cart_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "cart_user_id varchar(10) not null," +
                 "cart_good_id int(11)," +
+                "cart_good_picpath varchar(200)," +
                 "cart_good_user_id varchar(10)," +
+                "cart_good_name varchar(30)," +
                 "cart_money double(10));");
     }
 

@@ -1,8 +1,10 @@
 package com.teng.cainiaomall.Activity;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -37,6 +39,23 @@ public class Good_details extends AppCompatActivity {
         addcard.setOnClickListener(v -> {
             String user_id=sp.getString("username","");
             Cart_Dao cart_dao =new Cart_Dao(Good_details.this);
+//            String type[]=new String[2];
+//            type[0]="";
+//            type[1]="审核不通过";
+//            AlertDialog.Builder builder=new AlertDialog.Builder(Good_details.this);
+//            builder.setTitle("审核情况");
+//            builder.setItems(type, new DialogInterface.OnClickListener() {
+//                @Override
+//                public void onClick(DialogInterface dialog, int which) {
+//                    if(which==0){
+//                    }
+//                    else if(which==1){
+//
+//                    }
+//                }
+//            });
+//            builder.show();
+
             cart_dao.addCart(good,user_id);
             Intent intent1 = new Intent();
             intent1.setClass(Good_details.this,MainActivity.class);

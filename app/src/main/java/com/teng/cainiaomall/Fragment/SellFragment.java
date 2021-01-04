@@ -136,8 +136,8 @@ public class SellFragment extends Fragment {
             g_sx1= g_sx.getText().toString();
 
             SharedPreferences sharedPreferences=getActivity().getSharedPreferences("user_rememberpass", Context.MODE_PRIVATE);
-            String username=sharedPreferences.getString("username","");
-            Log.i(TAG, "onCreateView: "+username);
+            String user_id=sharedPreferences.getString("username","");
+            Log.i(TAG, "onCreateView: "+user_id);
 
             Good good =new Good();
             good.setGood_name(g_name1);
@@ -147,7 +147,7 @@ public class SellFragment extends Fragment {
             good.setGood_ztype(nicespinner21);
             good.setGood_time(imagdate);
             good.setGood_picpath(savepath);
-            good.setGood_user_id(username);
+            good.setGood_user_id(user_id);
             Good_Dao good_dao =new Good_Dao(getActivity());
             text1 = good_dao.addgood(good);
             Intent intent =new Intent();
