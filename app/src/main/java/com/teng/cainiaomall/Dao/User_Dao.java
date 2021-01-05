@@ -141,4 +141,29 @@ public class User_Dao {
         return 1;
     }
 
+    /*
+    *用户充值
+    *参数：user_id user_money
+    *
+    * */
+    public void chargeuser(String user_id,Double user_money){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("update cm_user set user_money= '"+user_money+"' where user_id='"+user_id+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+        }
+        cursor.close();
+        db.close();
+    }
+
+    /*
+    * 购买支付
+    *
+    * */
+    public void payfor(String user_id,Double user_money){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("update cm_user set user_money= '"+user_money+"' where user_id='"+user_id+"'",null);
+    }
+
 }

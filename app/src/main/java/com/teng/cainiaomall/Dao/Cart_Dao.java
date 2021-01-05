@@ -30,11 +30,13 @@ public class Cart_Dao {
         contentValues.put("cart_good_id", good.getGood_id());
         contentValues.put("cart_money", good.getGood_price());
         contentValues.put("cart_good_user_id",good.getGood_user_id());
+        contentValues.put("cart_good_picpath",good.getGood_picpath());
+        contentValues.put("cart_good_name",good.getGood_name());
+        contentValues.put("cart_quantity",1);
         db.insert("cm_cart", null, contentValues);
     }
 
     /*
-    *
     * 顾客购物车查询
     * 参数：user_id
     * */
@@ -44,13 +46,32 @@ public class Cart_Dao {
         final Cursor cursor = db.rawQuery("select * from cm_cart where cart_user_id='" + user_id + "'", null);
         while (cursor.moveToNext()){
             Cart cart=new Cart();
+
+            cart.setCart_good_name(cursor.getString(cursor.getColumnIndex("cart_good_name")));
             cart.setCart_good_id(cursor.getLong(cursor.getColumnIndex("cart_good_id")));
             cart.setCart_good_user_id(cursor.getString(cursor.getColumnIndex("cart_good_user_id")));
-            cart.setCart_money(cursor.getDouble(cursor.getColumnIndex("cart_price")));
-            cart.setCart_user_id(cursor.getString(cursor.getColumnIndex("cart_status")));
+            cart.setCart_money(cursor.getDouble(cursor.getColumnIndex("cart_money")));
+            cart.setCart_user_id(cursor.getString(cursor.getColumnIndex("cart_user_id")));
+            cart.setCart_good_picpath(cursor.getString(cursor.getColumnIndex("cart_good_picpath")));
             carts.add(cart);
         }
 
         return carts;
     }
+    /*
+    * 清楚购物车单一商品
+    * */
+    public void clearoneCart(String user_id ,String cart_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        db.execSQL("DELETE FROM cm_cart Where cart_user_id ="+ user_id +",cart_id="+ cart_id +"'",null);
+    }
+
+    /*
+     * 清楚购物车所有商品
+     * */
+    public void clearallCart(String user_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        db.execSQL("DELETE FROM cm_cart Where cart_user_id ="+user_id+"'",null);
+    }
+
 }

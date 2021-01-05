@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DBOpenHelp extends SQLiteOpenHelper {
     final static String DBNAME="cainiaomall.db";
-    final static int version=6;
+    final static int version=8;
     public DBOpenHelp(@Nullable Context context) {
         super(context, DBNAME, null, version);
     }
@@ -50,13 +50,24 @@ public class DBOpenHelp extends SQLiteOpenHelper {
                 "cart_good_picpath varchar(200)," +
                 "cart_good_user_id varchar(10)," +
                 "cart_good_name varchar(30)," +
+                "cart_quantity double(10)," +
                 "cart_money double(10));");
+        db.execSQL("CREATE TABLE 'cm_order'(order_id INTEGER PRIMARY KEY AUTOINCREMENT," +
+                "order_user_id varchar(10) not null," +
+                "order_good_id int(11)," +
+                "order_good_picpath varchar(200)," +
+                "order_good_user_id varchar(10)," +
+                "order_good_name varchar(30)," +
+                "order_quantity double(10)," +
+                "order_money double(10));");
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         db.execSQL("drop table if exists cm_user");
         db.execSQL("drop table if exists cm_good");
+        db.execSQL("drop table if exists cm_admin");
+        db.execSQL("drop table if exists cm_cart");
         onCreate(db);
     }
 }

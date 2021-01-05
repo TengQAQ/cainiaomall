@@ -8,10 +8,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.icu.text.SimpleDateFormat;
 import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
@@ -99,7 +97,7 @@ public class LoginActivity extends AppCompatActivity {
                 }else {
                     if (admin.getAdmin_id().equals(userName)&&admin.getAdmin_password().equals(userPasswd)){
                         Intent intent4 =new Intent();
-                        intent4.setClass(LoginActivity.this,Admin_main.class);
+                        intent4.setClass(LoginActivity.this, Main_Admin.class);
                         startActivity(intent4);
                         finish();
                     }

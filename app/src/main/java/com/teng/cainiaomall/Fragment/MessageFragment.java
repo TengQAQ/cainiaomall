@@ -52,12 +52,12 @@ public class MessageFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Long good_id = cartArrayList.get(position).getCart_good_id();
-                Log.i(TAG, ":"+good_id);
-                Intent intent = new Intent();
-                intent.putExtra("good_id",good_id);
-                intent.setClass(getActivity(), Good_details.class);
-                startActivity(intent);
+//                Long good_id = cartArrayList.get(position).getCart_good_id();
+//                Log.i(TAG, ":"+good_id);
+//                Intent intent = new Intent();
+//                intent.putExtra("good_id",good_id);
+//                intent.setClass(getActivity(), Good_details.class);
+//                startActivity(intent);
             }
         });
 
@@ -88,16 +88,18 @@ public class MessageFragment extends Fragment {
         public View getView(int position, View convertView, ViewGroup parent) {
             ViewHolder viewHolder = new ViewHolder();
             if (convertView==null) {
-
                 convertView=layoutInflater.inflate(R.layout.list_item3,parent,false);
-                viewHolder.tupian=(ImageView)convertView.findViewById(R.id.c_picture);
-                viewHolder.name=(TextView) convertView.findViewById(R.id.c_name);
+                viewHolder.tupian=convertView.findViewById(R.id.c_picture);
+                viewHolder.name= convertView.findViewById(R.id.c_name);
                 viewHolder.money= convertView.findViewById(R.id.c_money);
                 convertView.setTag(viewHolder);
             }else {
                 viewHolder= (ViewHolder) convertView.getTag();
             }
-            Cart cart=list.get(position);
+            Cart cart=new Cart();
+            cart = list.get(position);
+            Log.i(TAG, "getView456: "+cart.getCart_money());
+            Log.i(TAG, "getView666: "+cart.getCart_good_name());
             viewHolder.money.setText(cart.getCart_money()+"");
             Bitmap bitmap= BitmapFactory.decodeFile(getActivity().getFilesDir()+"/"+cart.getCart_good_picpath());
             viewHolder.tupian.setImageBitmap(bitmap);
