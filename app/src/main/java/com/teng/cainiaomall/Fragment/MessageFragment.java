@@ -19,8 +19,10 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.teng.cainiaomall.Activity.Good_details;
+import com.teng.cainiaomall.Activity.MainActivity;
 import com.teng.cainiaomall.Dao.Cart_Dao;
 import com.teng.cainiaomall.Dao.Good_Dao;
 import com.teng.cainiaomall.Model.Cart;
@@ -37,6 +39,8 @@ public class MessageFragment extends Fragment {
     private SharedPreferences sp= null;//保存登录后的用户名
     private SharedPreferences.Editor editor=null;
     private String user_id;
+    private TextView clearallcart,payfor;
+    private Double total=0.0;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -45,6 +49,8 @@ public class MessageFragment extends Fragment {
         user_id=sp.getString("username","");
 
         listView = view.findViewById(R.id.cartlist);
+        clearallcart=view.findViewById(R.id.clearallcart);
+        payfor=view.findViewById(R.id.payfor);
         Cart_Dao cart_dao= new Cart_Dao(getActivity());
         cartArrayList= cart_dao.findCart(user_id);
         MyListAdapter myListAdapter=new MyListAdapter(getActivity(),cartArrayList);//实例化适配器
@@ -52,17 +58,42 @@ public class MessageFragment extends Fragment {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-//                Long good_id = cartArrayList.get(position).getCart_good_id();
+                int good_id = cartArrayList.get(position).getCart_good_id();
 //                Log.i(TAG, ":"+good_id);
-//                Intent intent = new Intent();
-//                intent.putExtra("good_id",good_id);
-//                intent.setClass(getActivity(), Good_details.class);
-//                startActivity(intent);
+                Intent intent = new Intent();
+                intent.putExtra("good_id",good_id);
+                intent.setClass(getActivity(), Good_details.class);
+                startActivity(intent);
             }
         });
 
+        clearallcart.setOnClickListener(v -> {
+            cart_dao.clearallCart(user_id);
+            Toast.makeText(getContext(),"已经清空购物车",Toast.LENGTH_LONG).show();
+            Intent intent =new Intent();
+            intent.setClass(getContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+        payfor.setOnClickListener(v -> {
+            cartArrayList.size();
+            for (int i=0;i<cartArrayList.size();i++){
+                int good_id=cartArrayList.get(i).getCart_good_id();
+                total=cartArrayList.get(i).getCart_money()+total;
+                cart_dao.clearoneCart(user_id,good_id);
+                Good_Dao good_dao=new Good_Dao(getContext());
+                good_dao.cleangood(good_id);
+            }
+            Intent intent =new Intent();
+            intent.setClass(getContext(), MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        });
+
+
         return view;
     }
+
 
     private class MyListAdapter extends BaseAdapter {
         LayoutInflater layoutInflater;

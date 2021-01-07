@@ -22,6 +22,7 @@
             android:textSize="28sp"/>
     </LinearLayout>
     <ImageView
+        android:id="@+id/shangpintupian"
         android:layout_width="140dp"
         android:layout_height="140dp"
         android:layout_gravity="center"
@@ -42,8 +43,10 @@
             android:textSize="24dp"/>
 
         <TextView
+            android:id="@+id/shangpinjiage"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:hint=" "
             android:textSize="16dp" />
 
@@ -64,9 +67,10 @@
             android:textSize="20dp"/>
 
         <TextView
-
+            android:id="@+id/shangpinmingch"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:hint=""
             android:textSize="16dp"
             />
@@ -88,9 +92,10 @@
             android:textSize="20dp"/>
 
         <TextView
-
+            android:id="@+id/shangpinmiaoshu"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center_vertical"
             android:hint=""
             android:textSize="16dp"
             />
@@ -104,7 +109,7 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
         <TextView
-            android:text="送至："
+            android:text="属性："
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -112,9 +117,10 @@
             android:textSize="20dp"/>
 
         <TextView
-
+            android:id="@+id/shangpinshuxing"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:hint=""
             android:textSize="16dp"
             />
@@ -128,16 +134,17 @@
         android:layout_marginRight="20dp"
         android:layout_marginTop="20dp">
         <TextView
-            android:text="评论："
+            android:text="类型："
             android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="left"
             android:textSize="20dp"/>
-
         <TextView
+            android:id="@+id/shangpinleixing"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
             android:hint=""
             android:textSize="16dp" />
     </LinearLayout>

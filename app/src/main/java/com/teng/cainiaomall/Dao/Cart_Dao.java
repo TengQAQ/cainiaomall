@@ -46,24 +46,31 @@ public class Cart_Dao {
         final Cursor cursor = db.rawQuery("select * from cm_cart where cart_user_id='" + user_id + "'", null);
         while (cursor.moveToNext()){
             Cart cart=new Cart();
-
+            cart.setCart_id(cursor.getInt(cursor.getColumnIndex("cart_id")));
             cart.setCart_good_name(cursor.getString(cursor.getColumnIndex("cart_good_name")));
-            cart.setCart_good_id(cursor.getLong(cursor.getColumnIndex("cart_good_id")));
+            cart.setCart_good_id(cursor.getInt(cursor.getColumnIndex("cart_good_id")));
             cart.setCart_good_user_id(cursor.getString(cursor.getColumnIndex("cart_good_user_id")));
             cart.setCart_money(cursor.getDouble(cursor.getColumnIndex("cart_money")));
             cart.setCart_user_id(cursor.getString(cursor.getColumnIndex("cart_user_id")));
             cart.setCart_good_picpath(cursor.getString(cursor.getColumnIndex("cart_good_picpath")));
             carts.add(cart);
         }
-
+        cursor.close();
+        db.close();
         return carts;
     }
     /*
     * 清楚购物车单一商品
     * */
-    public void clearoneCart(String user_id ,String cart_id){
+    public void clearoneCart(String user_id ,int good_id){
         db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        db.execSQL("DELETE FROM cm_cart Where cart_user_id ="+ user_id +",cart_id="+ cart_id +"'",null);
+        Cursor cursor = db.rawQuery("DELETE FROM cm_cart WHERE cart_user_id ='"+ user_id +"'AND cart_good_id='"+ good_id +"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+        }
+        cursor.close();
+        db.close();
     }
 
     /*
@@ -71,7 +78,13 @@ public class Cart_Dao {
      * */
     public void clearallCart(String user_id){
         db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
-        db.execSQL("DELETE FROM cm_cart Where cart_user_id ="+user_id+"'",null);
+        Cursor cursor=db.rawQuery("DELETE FROM cm_cart WHERE cart_user_id ='"+user_id+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+        }
+        cursor.close();
+        db.close();
     }
 
 }

@@ -54,12 +54,12 @@ public class SellFragment extends Fragment {
     private NiceSpinner niceSpinner;
     EditText g_name,g_describe,g_money,g_sx;
     TextView commit;
-    String g_name1,g_describe1,g_money1,g_sx1,nicespinner21="类型一",savepath;
+    String g_name1,g_describe1,g_money1,g_sx1,nicespinner21="学习用品",savepath;
     long text1;
     SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy_MM_dd_HHmmss");//获取当前时间戳
     Date date = new Date(System.currentTimeMillis());
-    List<String> spinnerData = new LinkedList<>(Arrays.asList("类型一", "类型二", "类型三", "类型四",
-            "类型五", "类型六", "类型七", "类型八", "类型九", "类型十"));
+    List<String> spinnerData = new LinkedList<>(Arrays.asList("学习用品", "电子数码", "衣服鞋子", "体育用品",
+            "生活用品", "游戏账号", "零食小吃"));
 
 
     @Override

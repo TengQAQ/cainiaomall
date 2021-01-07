@@ -3,12 +3,21 @@ package com.teng.cainiaomall.Model;
 import android.content.Intent;
 
 public class Cart {
+    private int cart_id;
     private String cart_user_id;
-    private Long cart_good_id;
+    private int cart_good_id;
     private String cart_good_user_id;
     private Double cart_money;
     private String cart_good_picpath;
     private String cart_good_name;
+
+    public int getCart_id() {
+        return cart_id;
+    }
+
+    public void setCart_id(int cart_id) {
+        this.cart_id = cart_id;
+    }
 
     public String getCart_user_id() {
         return cart_user_id;
@@ -18,11 +27,11 @@ public class Cart {
         this.cart_user_id = cart_user_id;
     }
 
-    public Long getCart_good_id() {
+    public int getCart_good_id() {
         return cart_good_id;
     }
 
-    public void setCart_good_id(Long cart_good_id) {
+    public void setCart_good_id(int cart_good_id) {
         this.cart_good_id = cart_good_id;
     }
 

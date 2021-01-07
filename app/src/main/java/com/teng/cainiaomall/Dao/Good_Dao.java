@@ -161,4 +161,14 @@ public class Good_Dao {
         return null;
     }
 
+    public void cleangood(int good_id){
+        db = DBOpenHelper.getReadableDatabase();//初始化SQLiteDatabase
+        Cursor cursor=db.rawQuery("DELETE FROM cm_good WHERE good_id ='"+good_id+"'",null);
+        if (cursor.moveToNext()){
+            cursor.close();
+            db.close();
+        }
+        cursor.close();
+        db.close();
+    }
 }

@@ -58,17 +58,17 @@ public class CommodityAudit extends AppCompatActivity {
                         if(which==0){
 //                            Log.i("用户id：", "onClick: "+user_id);
                             good_dao.good_auditsuccess(good_id);
-                            Good_Dao good_dao2 = new Good_Dao(CommodityAudit.this);
-                            list= good_dao2.sellgoodlist();
-                            MyListAdapter myListAdapter=new MyListAdapter(CommodityAudit.this,list);//实例化适配器
-                            listView.setAdapter(myListAdapter);
+                            Intent intent =new Intent();
+                            intent.setClass(CommodityAudit.this,Main_Admin.class);
+                            startActivity(intent);
+                            finish();
                         }
                         else if(which==1){
                             good_dao.good_auditfailure(good_id);
-                            Good_Dao good_dao1 = new Good_Dao(CommodityAudit.this);
-                            list= good_dao1.sellgoodlist();
-                            MyListAdapter myListAdapter=new MyListAdapter(CommodityAudit.this,list);//实例化适配器
-                            listView.setAdapter(myListAdapter);
+                            Intent intent =new Intent();
+                            intent.setClass(CommodityAudit.this,Main_Admin.class);
+                            startActivity(intent);
+                            finish();
 
                         }
                     }

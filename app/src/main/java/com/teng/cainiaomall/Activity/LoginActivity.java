@@ -105,7 +105,9 @@ public class LoginActivity extends AppCompatActivity {
                 }
 
                 User user=user_dao.findUser(userName);
-                if (user==null){}else {
+                if (user==null){
+                    Toast.makeText(LoginActivity.this,"账号或者密码错误",Toast.LENGTH_LONG).show();
+                }else {
                     if (user.getUser_id().equals(userName)&&user.getUser_password().equals(userPasswd)){
                         if (user.getUser_statue() == 1){//1正常登录
                             if (mremenberpassword.isChecked()){

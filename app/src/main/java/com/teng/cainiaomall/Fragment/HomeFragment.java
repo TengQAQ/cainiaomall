@@ -57,7 +57,7 @@ public class HomeFragment extends Fragment {
         toolbar=view.findViewById(R.id.toolbar);
 
         mlist = new ArrayList<>();
-        mlist.add(R.mipmap.cainiaologo);
+        mlist.add(R.mipmap.lunbo1);
         mlist.add(R.mipmap.lunbo2);
         mlist.add(R.mipmap.lunbo3);
         mlist1 = new ArrayList<>();

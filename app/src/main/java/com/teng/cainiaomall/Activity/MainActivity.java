@@ -121,7 +121,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 mFragmentId = Fragment_Message;
                 mtv_message.setTextColor(getResources().getColor(R.color.colorTextPressed));
                 mtv_message.setCompoundDrawablesWithIntrinsicBounds(0,
-                        R.mipmap.message_1,0,0);
+                        R.mipmap.cart_1,0,0);
                 if(mFragment_Messagge == null){
                     mFragment_Messagge = new MessageFragment();
                     mTransaction.add(R.id.container, mFragment_Messagge, "MessageFragment");
@@ -178,7 +178,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             //将对应菜单栏设置为默认状态
             mtv_message.setTextColor(getResources().getColor(R.color.colorTextNormal));
             mtv_message.setCompoundDrawablesWithIntrinsicBounds(0,
-                    R.mipmap.message,0,0);
+                    R.mipmap.cart,0,0);
         }
         if(mFragment_Mine != null){
             //隐藏Fragment

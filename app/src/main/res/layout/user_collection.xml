@@ -27,16 +27,29 @@
         <TextView
             android:layout_width="250dp"
             android:layout_height="40dp"
-            android:layout_marginLeft="12dp"
             android:layout_below="@id/g_name"
-            android:hint="商品描述"
-            />
+            android:layout_marginLeft="12dp"
+            android:hint="商品描述" />
 
-        <TextView
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="12dp"
-            android:hint="价格"/>
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:gravity="center_vertical"
+                android:text="价格："
+                android:textSize="12dp" />
+
+            <TextView
+               android:layout_width="match_parent"
+               android:layout_height="match_parent"
+               android:gravity="center_vertical"
+               android:hint="价格"/>
+        </LinearLayout>
 
     </LinearLayout>
 
@@ -44,6 +57,7 @@
         android:layout_width="45dp"
         android:layout_height="71dp"
         android:layout_marginTop="15dp"
+        android:layout_gravity="right"
         android:src="@mipmap/shoucan" />
 
 

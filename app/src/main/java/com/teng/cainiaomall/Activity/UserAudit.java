@@ -58,18 +58,18 @@ public class UserAudit extends AppCompatActivity {
                         if(which==0){
 //                            Log.i("用户id：", "onClick: "+user_id);
                             user_dao.user_auditsuccess(user_id);
-                            User_Dao user_dao = new User_Dao(UserAudit.this);
-                            list= user_dao.Useraudit();
-                            MyListAdapter myListAdapter=new MyListAdapter(UserAudit.this,list);//实例化适配器
-                            listView.setAdapter(myListAdapter);
+                            Intent intent =new Intent();
+                            intent.setClass(UserAudit.this,Main_Admin.class);
+                            startActivity(intent);
+                            finish();
 
                         }
                         else if(which==1){
                             user_dao.user_auditfailure(user_id);
-                            User_Dao user_dao = new User_Dao(UserAudit.this);
-                            list= user_dao.Useraudit();
-                            MyListAdapter myListAdapter=new MyListAdapter(UserAudit.this,list);//实例化适配器
-                            listView.setAdapter(myListAdapter);
+                            Intent intent =new Intent();
+                            intent.setClass(UserAudit.this,Main_Admin.class);
+                            startActivity(intent);
+                            finish();
 
                         }
                     }
